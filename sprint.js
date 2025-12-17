@@ -2,43 +2,98 @@
 // console.log("Hello, World!");
 
 // common function
-
 // console.log("Hello, World!"); // prints in console
 // alert("This is an alert box!");
+// // a = input()
 // let name = prompt("What’s your name?");
 // let ok = confirm("Do you want to continue?");
 // console.log("User:", name, "Confirmed:", ok);
-
+// function alert(a){
+//    console.log(a);
+// }
+// alert("print something");
 // Single line comment
 /* Multi-line
    comment */
 
+
+// obj = null;
+
+// console.log(obj ?? "Default Value"); // "Default Value"
+
+
+
 // Variables & Data Types
+// primitive data types definition: the data types that do not require any pther data typet to be declared,
+// data that is not an object and has no methods
 // Data Types: string, number, boolean, undefined, null, object, array
 // let age = 25; // number
-// let name = "John";
+// console.log(typeof(age))
+// let name = 'John';
+// console.log(typeof(name))
+
 // let isStudent = true; // boolean
 // let address;
-// let phone = null; // null
+// var phone = null; // null
+// phone = 0987654323;
+// null vs undefined
+
+// var a = undefined;
+// console.log(a); // undefined
+
+
+// null is an assignment value. It can be assigned to a variable as a representation of no value.
+// undefined means a variable has been declared but has not yet been assigned a value.
 // // //  reference data types
 // let person = { firstName: "Jane", lastName: "Doe" }; // object
 // let colors = ["red", "green", "blue", 1, true]; // array
 // let fn = function(){console.log("Hi")}; // Function
 
+
+// (function c() {
+//    let a;
+//    console.log(a);
+//    a= 5;
+//    function d(){
+//       console.log(a);
+//    }
+// })()
+
+
 // Hoisting
+// define hoisting
+// Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
 
-// let b = 2;
 
+
+// let b = 2; //declaration + initialisation
+// b = 5; // initialisation
+// // let b = 3; // redeclare
 // var a = 1;
-// const c = 3;
+// var a = 5; //reclare
+
+// const c = 10; // declare + initialise
+// // const c = 15; // redeclare
+// const c = 3; // redeclare
+
+// let can be re-assigned but not re-declared
+// var can be re-declared and re-assigned
+// const cannot be re-declared or re-assigned
 
 // const getValue = function(){
-// var a;
-//    console.log(a);
-//    var a = 10;
-//    console.log(a);
+//    // console.log(a); 
+//    console.log("Hello")// undefined
+//    console.log("Hello")// undefined
+//    console.log("Hello")// undefined
+//    console.log("Hello")// undefined
+//    const a = 10;
+//    console.log(a); // 10
 // };
 // getValue(); // undefined due to hoisting
+
+// var a = true;
+// 
+
 
 // var greeting = "Hello Greetings from Hoisting!";
 // console.log(greeting); // undefined due to hoisting
@@ -48,6 +103,22 @@
 
 // console.log(y); // Error! (let/const not hoisted)
 // let y = 10;
+
+// let a = 
+// console.log(Number(a));
+// console.log(Boolean(a));
+
+// const person = {
+//     name: "John",
+//     age: 30,
+//     isStudent: true
+// }
+
+//  default value of boolean 
+// let a = 1;
+// let b = 0;
+// console.log(Boolean(a)); // true
+// console.log(Boolean(b)); // false
 
 // Typeof operator
 // let a = prompt(`Enter a value:`);
@@ -68,6 +139,12 @@
 
 // Falsy values: false, 0, "", null, undefined, NaN
 // Truthy values: true, 1, "non-empty string", {}, [] //
+
+// let a = 1
+// let b = "1"
+
+// console.log(a == b && typeof(a) == typeof(b)); //false
+// console.log(a === b); // false
 
 // Operators
 
@@ -115,10 +192,16 @@
 // console.log(name ?? null); // Guest
 
 // Optional chaining
-// let user = {profile: {email: "me@mail.com"}};
+// let user = {profile: {email: "me@mail.com"}, address: {city: "New York"}, salary: 10000};
+// let arr = [1,2,4,5,6,7,7]
+// // let S = "Satya"
+
+// for (let key in arr) {
+//   console.log(key);
+// }
+
 // console.log(user.profile?.email);  // "me@mail.com"
 // console.log(user.address?.city);
-// console.log(user?.email);
 
 // Control Structures
 
@@ -128,8 +211,8 @@
 
 // else console.log("Try again");
 
-// switch
-// let color = "red";
+// switch if color = red
+// let color = "violet";
 // switch(color) {
 //   case "red": console.log("Stop"); break;
 //   case "green": console.log("Go"); break;
@@ -138,53 +221,87 @@
 
 // loops //used to execute a particular block of code for n
 //  number of time
-// for (let i=1; i<=3; i++) console.log("For:", i);
+// for (let i=1; i<=3; i+2) {
+//    console.log("For:", i);
+//    console.log("For:", i*5);
+// }
 
 // let j=1;
 // while (j<=3) { console.log("While:", j); j++; }
 
-// let k=1;
-// do {console.log("Do-while:", k); k++;} while (k<1);
+
 
 // for...in (objects)
-// let obj = {a:1,b:2};
-// for (let key in obj) console.log(key, obj[key]);
+// let obj = {
+//    a:1,
+//    b:2
+// };
+
+// for (let key in obj) console.log(obj[key]);
 
 // for...of (arrays)
-// for (let num of [10,20,30]) console.log(num);
+a=[10,20,30]
+for (let num in a) console.log(a[num]);
 
 // // break / continue
-// for (let n=1; n<=5; n++) {
+
+// for (let n=1; n<=7; n++) {
 //   if (n===3) continue;
 //   if (n===4) break;
-//   console.log(n);
+//   console.log(n); // 1, 2, 4
 // }
 
 // Function declaration
 // console.log(greet("Alice"));
 // console.log(greet("Bob"));
-// console.log(greet("Charlie"));
-// function greet(name) {
+// // console.log(greet("Charlie"));
+// const greet = function(name){
 //   return "Hello " + name;
 // }
+// greet("Satya")
 
 // console.log(greet("Alice"));
 // console.log(greet("Bob"));
 // console.log(greet("Charlie"));
 
+// variable declaration and variable initialization?
 // // Function expression
-// const add = function(a,b){  return a+b; };
+// const add = function(){  return a+b; };
 // console.log(add(2,3));
 
 // // Arrow function
-// const square = n => n*n;
+// const square = (n, callback) => n*n;
 // console.log(square(5));
 
-// // Default & Rest parameters
-// function sum(a, b, ...rest) {
-//   return a+b+rest.reduce((acc,v)=>acc+v,0); // sum of rest
+// // Parameters & Arguments
+// function greet(name) {
+//   return "Hello " + name;
 // }
-// console.log(sum(1,2,3,4,5,6)); // 10
+
+// greet a = new greet();
+
+// // Default & Rest parameters
+
+
+
+
+
+// (function sum(a, b, ...rest) {
+//   console.log(a+b+rest.reduce((acc,v)=>acc+v,0)); // sum of rest
+// })()
+
+
+
+
+
+// function product(a,b,...rest){
+//   const z = 5;
+//   console.log(a*b * rest.reduce((acc,v)=>acc*v,1))
+//   function access(){
+//     console.log(z); 
+// }
+
+// console.log(product(4,6,234,2345,1345 ));
 
 // // IIFE
 // (function(){
@@ -193,11 +310,21 @@
 
 // // Callback function
 // A callback function is simply a function that is passed as an argument to another function — and that function will call it (or "call it back") later.
-// function processUserInput(callback) {
+// function processUserInput(greet) {
 //   let name = "John";
 //   console.log("Processing user input...");
-//   callback(name);
+//   return greet(name);
 // }
+
+// processUserInput(greet)
+
+// function greet(name){
+//   console.log("Hello " + name);
+// }
+
+
+
+
 // processUserInput(n => console.log("Hi " + n));
 
 // // Higher-order function
@@ -207,6 +334,7 @@
 //     return number * factor;
 //   };
 // }
+// multiplyBy(5);
 
 // function
 // const double = multiplyBy(2);
@@ -215,27 +343,49 @@
 // Scope & Closures
 // Understand variable access and memory persistence.
 
-// let globalVar = "I am global";
 
-// Function scope
+
+
+// var globalVar = "I am global";
+
+// // Function scope
+
+
+
+
+
+
 // function testScope() {
-//   let local = "I am local";
-//   console.log(local);
-//   console.log(globalVar);
+//   var local = "I am local";
 //   function innerFunc() {
-//       console.log(local); // has access to outer function's variable
+//       return (local); 
 //   }
-//   innerFunc();
+//   return innerFunc();
+
 // }
 
-// console.log(local); // not accessible
-// testScope();
+// const result = testScope();
+// console.log(result); 
 
 // Block scope
+
 // if (true) {
 //   let block = "I exist only here";
 //   console.log(block); // inside block only
 // }
+
+// function testScope() {
+//   let local = "I am local";
+//    if(true) {
+//       let block = "I exist only here";
+//       console.log(block); // inside block only
+//    }
+//    console.log(block); // ReferenceError
+// }
+
+// which keywords. let/cost were introduced in es6 
+
+
 
 // // Lexical scope & Closures
 // // Where the data can be accessed from nested functions
@@ -243,9 +393,17 @@
 //   let secret = "Hidden data";
 //   function inner() {
 //     console.log(secret); // has access
+//     function inner2(){
+//       let secret2 = "Hidden data2";
+//       console.log(secret); // has access
+//     }
+
+//     console.log(secret2);  
 //   }
 //   return inner;
 // }
+// outer()
+
 // we can see that the inner function has access to the outer function's variable
 // secret, even after the outer function has finished executing.
 // const closureExample = outer();
@@ -274,7 +432,7 @@
 //    }
 //    };
 //    person.greet();
-// //
+//
 // const person = {
 //   name: "Alice",
 //   greet() { console.log("Hi " + this.name); }
@@ -304,8 +462,10 @@
 // const user = { name: "Charlie" };
 
 // sayHello.call(user, 25); // set value of this (to - 25) as its scope is lost
-// sayHello.apply(user, [35, 20, 15]); // set value of this (to - 35) as its scope is lost
-// const boundFn = sayHello.bind(user, 35);
-// boundFn();
+// // sayHello.apply(user, [35, 20, 15]); // set value of this (to - 35) as its scope is lost
+// sayHello.bind(user, 35); // 
+
+
+
 
 

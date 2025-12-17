@@ -5,7 +5,43 @@
 
 // // Literal : "Fixed value"
 // const person = { name: "Alice", age: 22, greet() { console.log("Hi " + this.name); } };
-// const a = 10; 
+// person.name = "Bob";
+// console.log(person.name);
+// const a = 10;
+
+// const obj = {
+//     name:"Satya",
+//     company : "Nxtwave",
+//     address: {
+//         pin: 500032,
+//         house: {
+//             name: "XYZ",
+//             number: 123
+//         }
+//     }
+// }
+// console.log(obj.address.house.number); // 123
+
+// constructor
+// const user = new Object();
+// user.name = "Bob";
+// user.age = 25;
+
+// object.create
+
+// const user = Object.create({name:"Satya", age: 25});
+// console.log(user);
+
+// const a = fetch("http");
+// const b = 6;
+
+// const c =( a ?? 4 )+ (b ?? 9)
+// console.log(c);
+
+// (function add(a, b) {
+//     return a + b;
+// })()
+
 // // Constructor
 // const user = new Object();
 // user.name = "Bob";
@@ -23,115 +59,213 @@
 // console.log(person.age);      // dot
 // console.log(person["age"]);      // bracket
 
-// // Add/modify/delete properties
+// const car = {
+//   brand: "BMW",        // property
+//   start() {            // method
+//     console.log("Engine started");
+//   }
+// };
 
-// person.city = "Delhi";
-// person.age = 23;
-// delete person.city;
+// const dog ={
+//     breed: "Labrador",
+//     bark() {
+//         console.log("Woof!");
+//     },
+//     eat() {
+//         console.log("meat");
+//     }
+// }
 
-// // Methods
-// const person = { name: "Alice", age: 22, place: "Delhi" };
+// const obj = { name: "Sam" };
+// obj.age = 30;        // Add
+// console.log(obj);
+// sam, 30
 
-// console.log(Object.keys(person));    // ['name','age','place']
-// console.log(Object.values(person));  // ['Alice',22,'Delhi']
-// console.log(Object.entries(person)); // [['name','Alice'],...]
+// obj.name = "Sammy"; // Modify
+// console.log(obj);
+// sammy, 30.
+
+// delete obj.age;     // Delete
+// console.log(obj);
+// sammy
+
+// // [city, pin]
+
+// const user = { name: "Mike", age: 21, address: { city: "Delhi", pin: 500032 } };
+
+// console.log(Object.keys(user.address));    //  returning me an array
+// console.log(Object.values(user));  // ["Mike", 21, {city: "Delhi", pin: 500032}]
+
+// console.log(Object.entries(user)); // [["name","Mike"],["age",21]]
 
 // // Assign, Freeze, Seal
-// const person = { name: "Alice", age: 22 };
-// const copy = Object.assign({}, person);
+
+// Object.freeze(copy); // cannot modify but can access and add new
+// copy.name = "Bob";
+// copy.place = "Delhi"; //
+
 // console.log(copy); // { name: "Alice", age: 22 }
-// // console.log(copy.name); // "Alice"
-// Object.freeze(copy); // cannot modify
 
 // Object.seal(copy);
-// copy.name = "Bob"; // cannot add new 
+// copy.name = "Bob";
+// copy.place = "Delhi"; // cannot add new
+// console.log(copy); // { name: "Bob", age: 22 }
+
+// const person = { name: "Alice", age: 22};
+// const copy = person
+// const copy2 = Object.assign({}, person);
+// console.log(copy)
+// console.log(copy2)
+
+// person.name = "Bob";
+// console.log(person);
+// console.log(copy);
+// console.log(copy2);
+
+// // console.log(copy.name); // "Alice"
+// copy.name = "Bob"; // cannot add new
 // console.log(copy); // cannot add/delete but can modify existing
 
 // // Destructuring + Spread + Shorthand
-// const person = { name: "Alice", age: 22 };
-// // console.log(person.name); // "Alice"
-// // const { name, age } = person;
-// // console.log(name); // "Alice"
+// console.log(person.age, person.name); // "22"
+
+// const person = { name: "Alice", age: 22, city: "Delhi", pin: 500032 };
+// const { name, pin, ...rest } = person;
+// console.log(name, pin , rest); // "Alice", 22
 
 // const updated = { ...person, place: "Delhi" };
-// // console.log(updated); // { name: "Alice", age: 22, place: "Delhi" }
+
+// console.log(updated); // { name: "Alice", age: 22, place: "Delhi" }
 // const newPerson = (name, age) => ({ name, age });
 // console.log(name, age, updated, newPerson("Bob", 30));
 
+// shorthand
+// const name = "John";
+// const age = 30;
+
+// const user = {
+//   name, // same as name: John
+//   age,  // same as age: 30
+//   greet() {
+//     console.log("Hi!");
+//   }
+// };
+// console.log(user);
 
 // Arrays
+
 // // Creation
-// const nums = [1, 2, 3]; //literal
-// console.log(nums[0]); 
+// console.log(nums[0]);
 // const arr2 = new Array(5); //constructor
+// const arr3 = [];    // Empty array
+// arr3[0] = 1;
+// arr3[1] = 2;
+// arr3[2] = 3;
+// console.log(arr3);
+
+// const nums = [1, 2, 3]; //literal
+// nums[2]
 
 // // Mutating
+// const nums = [1, 2, 3, 5, 7, 9, 0]; //literal
 // nums.push(4);
 // nums.pop();
 // nums.shift();
 // nums.unshift(3);
-// nums.splice(1, 1, 9); // replace 
-// nums.splice(1, 0, 2,3,4); // add 
-// nums.splice(1, 2); // delete 2 elements 
+// nums.splice(1, 5, 9); // replace // delete 1 element at index 1
+// nums.splice(2, 0, 9); // add
+// nums.splice(0, 7); // delete 2 elements
+// console.log(nums);
 
 // arr = [3, 1, 4, 2];
-// nums.sort();
-// nums.reverse();
+// arr.reverse();
+// arr.reverse();
+// console.log(arr);
+
+// const arr = [5,2,6,1]
+// arr.sort(reverse= true);
+// console.log(arr);
 
 // // Non-mutating
-// nums= [1,2,3,4,5];
-// nums2 = [1,4,5,6]; // copy
-// // const sliced = nums.slice(1, 3); // [2,3]
-// const combined = nums.concat(nums2).concat([2,3,4,5]); 
-// console.log(combined); 
- // [1,2,3,4,5,1,4,5,6]
 
+// nums= [1,2,3,4,5];
+// nums2 = [1,4,5,6];
+// const combined = nums.concat(nums2)
+// console.log(combined);
+
+// [1,2,3,4,5,1,4,5,6]
+
+// const sliced = nums.slice(1, 5); // [2,3]
 // console.log(combined.join("-")); // "1-2-3-4-5-1-4-5-6"
 
 // // Iteration
-// nums.forEach(n => console.log("forEach:", n)); 
+// nums= [1,2,3,4,5];
+// for(int i =0; i< nums.length; i++){
+//     print(nums[i]);
+// }
+// nums.forEach(n => console.log("forEach:", n));
 // const squares = nums.map(n => n * n); // transforming
 
 // const even = nums.filter(n => n % 2 === 0);  //searching
 // const nums = [1, 2, 3, 4, 5, 6];
+// nums.length; // 6
+
 // const evenNums = nums.filter((n) => n % 2 === 0);
 // console.log(evenNums);   // [2, 4, 6]
 
 // const total = nums.reduce((a,b)=>a+b,0); // aggregating
-// const nums = [1, 2, 3, 4];
 // const total = nums.reduce((a, b) => a + b, 0);
 // console.log(total);
 
-// console.log(nums.find(n=>n>2)) ; // return first match  or undefined
+// const nums = [1, 6, 2, 11];
+// console.log(nums.find(n=>n>1)) ; // return first match  or undefined
 // console.log(nums.findIndex(n=>n>2)); // return first match  or -1
-
 
 // console.log(nums.some(n=>n>5), nums.every(n=>n<10));  // boolean checks
 
-
 // // Destructuring + Spread
-// const [first, second, ...rest] = combined;
+// const [first, second, ...rest] = [56,4,7];
+// console.log(first, second, rest);
 // const merged = [...nums, ...arr2];
 
 // // Array utilities
 // const nums = [1, 2, 3];
-// console.log(Array.from("123", "456")); // [2,4,6]
+// console.log(Array.from("Satya")) // ["S","a","t","y","a"]
+// console.log(Array.from("123", n => n * 2)); // [2,4,6]
+// console.log(Array.from("123", n => n * 2)); // [2,4,6]
+
 // console.log(Array.isArray(nums));
 // console.log(Array.isArray(combined));
 
+// Strings
+// console.log(str.length); //25
+// str.length;
 
-// Strings  
-// let str = " JavaScript Rocks Rocks! ";
+// console.log(str.charAt(2))
+
+// const text = "JavaScript";
+// // text.includes(a); //3
+
+// console.log(text.slice(3,-1));       // "Java"
+// console.log(text.substring(3,-1));  // "Script"
+// console.log(text.substr(2,-1));
+//
+// console.log(text.slice(1,5))
+// console.log(text.substring(5,-9) )  // "Script")
 
 // console.log(str.length, str.charAt(2), str.indexOf("S"), str.lastIndexOf("c"));
 // console.log(str.includes("Rocks"));
 
-// console.log(str.slice(-1,5)) //5-1 = 4 
+// console.log(str.slice(-1,5)) //5-1 = 4
 // console.log(str.substring(1,5));
 // console.log(str.toLowerCase(), str.toUpperCase());
 
-
 // console.log(str.trim(), str.trimStart(), str.trimEnd());
+
+// console.log(str.split(" ").length) //
+// let str = " JavaScript Rocks Rocks! ";
+// console.log(str.replace("Rock","Rules")) //
+// console.log(str.replaceAll("Rock", "Rules"));
 
 // console.log(str.split(" "), str.replace("Rocks","Rules"), str.replaceAll("a","@"));
 // console.log(str.replace("Rocks","Rules"));
@@ -140,148 +274,379 @@
 // let lang = "JavaScript";
 // console.log(`I love ${lang.toUpperCase()}!`);
 
+// String Destructuring
+// const [a, b, c] = "hey";
+// console.log(a, b, c); // h e y
+
+// Spread Operator with Strings
+// const chars = [..."Code"];
+// console.log(chars); // ["C","o","d","e"]
+
+// string interpolation example
+
+// console.log(`I love ${lang.toUpperCase()}!`);
+
+// String.fromCharCode() & charCodeAt()
+// console.log("A".charCodeAt(0)); // 65
+// console.log(String.fromCharCode(65)); // "A"
+
 // ES6+ Features
-// var 
-// // let, const already seen
 
-// // Arrow functions : 
-// A shorter syntax for writing functions.
-// Arrow functions do not have their own this — useful in callbacks.
+// let and const
 
-// const greet = (callback) => `Hello ${callback("Alex")}`;
+// Block-scoped variables.
+// let count = 10;   // can be reassigned
+// const PI = 3.14;  // cannot be reassigned
 
-// console.log(greet(name => name));
+// Arrow Functions
+// Short syntax + lexical this.
+// function greet() {
+//   console.log("Hello");
+// }
+// const greet = () => console.log("Hello");
 
-// // Destructuring
-// const [x,y] = [10,20];
-// const {name: n, age: a} = {name:"A", age:30};
+// const obj = {
+//     name: "Satya",
+//     greet: function() {
+//         console.log(`Hello, ${this}!`); //satya
+//     },
+//     greet2 : () => {
+//         console.log(`Hello, ${this}!`);  // undefined
+//     }
 
-// Spread + Rest
-// Spread : Expands elements of an array or object.
-// const nums1 = [1, 2];
-// const nums2 = [3, 4];
-// const combined = [...nums1, ...nums2];
-// console.log(combined); // [1, 2, 3, 4]
-// const obj1 = { a: 1 };
-// const obj2 = { b: 2 };
-// const merged = { ...obj1, ...obj2 };
-// console.log(merged); 
+// }
+// console.log(obj.greet());
+// console.log(obj.greet2());
 
-// REST : Collects all remaining arguments into a single array parameter.
-// function sum(a,b, ...vals){ return vals.reduce((a,b)=>a+b); }
-// console.log(sum(1,2,3,4,5));
+// const a  = (a = 5) => {
 
-// // Object shorthand & enhanced literals
-// const city = "Delhi";
-// const student = { city, introduce() { console.log("From", this.city); } };
+//         console.log(a);
+//     }
+// a();
+
+// Template Literals
+
+// String with variables using backticks.
+
+// const name = "Satya";
+// console.log(`Hello, ${name}!`);
+
+// 4. Destructuring
+
+// Extract values from arrays/objects.
+
+// const [a, b] = [10, 20];
+// const { name, age } = { name: "Aarav", age: 24 };
+
+// 5. Spread Operator (...)
+
+// Expands or copies arrays/objects.
+
+// const arr1 = [1,2];
+// const arr2 = [...arr1, 3,4]; // [1,2,3,4]
+
+// const obj2 = { ...{a:1}, b:2 }; // {a:1,b:2}
+
+// 6. Rest Parameters
+
+// Collects multiple arguments into an array.
+
+// function sum(...nums) {
+//   return nums.reduce((a,b)=>a+b);
+// }
+
+// 7. Default Parameters
+
+// Fallback value if nothing passed.
+
+// function greet(name = "Guest") {
+
+//   console.log(`Hello ${name}`);
+// }
+
+// 8. Object Shorthand
+
+// If key and variable name are same.
+
+// const age = 25;
+// const user = { age }; // instead of { age: age }
+// console.log(user);
+
+// 9. Enhanced Object Literals
+
+// Add methods directly, use computed keys.
+
 // const key = "score";
 // const student = {
-//   name: "Emma",
-//   // Method shorthand
-//   greet() {
-//     console.log(`Hello, ${this.name}`);
-//   },
-//   // Computed property name
-//   [key]: 95
+//   name: "Riya",
+//   [key]: 95,
+//   greet() { console.log("Hi") }
 // };
 
-// student.greet(); // Hello, Emma
-// console.log(student.score); // 95
+// 10. for...of Loop
 
+// Iterates over iterable items (arrays, strings).
 
-
-// // for...of
-// for (let num of [1,2,3]) console.log(num);
-
-// // Modules (conceptual)
-// export const add = (a,b)=>a+b;
-// import { add } from './sprint.js';
-// console.log(add(2, 3));
-
-
-// // Classes : Classes are templates for creating objects — part of object-oriented programming in JS.
-// class Animal {
-//   constructor(name){ this.name = name; }
-//   speak(){ console.log(this.name + " makes sound"); }
-//   eat(){ console.log(this.name + " eats"); }
+// const arr = [10, 20, 30, 40, 50]
+// for (const num of arr) {
+//   console.log(num);
 // }
-// class Dog extends Animal {
-//   speak(){ console.log(this.name + " barks"); }
+
+// 11. Modules (import/export)
+
+// export:
+// export const PI = 3.14;
+
+// import:
+// import { PI } from './math.js';
+
+// 12. Classes
+
+// Blueprint for creating objects.
+
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   speak() {
+//     console.log(`Hello, I'm ${this.name}`);
+//   }
 // }
-// new Dog("Buddy").speak();
-// new Dog("Buddy").eat();
 
-// Asynchronous JavaScript
-// Synchronous
-// Code runs line by line — one statement must finish before the next starts.
-// It blocks further execution until the current line is done.
-// console.log("1");
-// console.log("2");
-// console.log("3");
-// // Output: 1 2 3
+// const p = new Person("Satya");
+// p.speak();
 
-// Asynchronous
-// Code does not wait for tasks to finish.
-// Tasks like API calls, file reading, or timers run in the background while the rest of the code continues.
+// Type.          	Meaning	                                    Example
+// Synchronous	    Code runs line by line; next line waits	    Regular functions
+// Asynchronous	    Code runs without waiting; continues later	setTimeout, network calls, promises
 
-// console.log("1");
-// setTimeout(()=>console.log("2"),2000); // runs after current stack is clear
-// console.log("3");
-// Output: 1 3 2
+// console.log("A");
+// console.log("B");
+// console.log("C");
 
-// setTimeout(()=>console.log("After 2s"),2000);
-// const id = setInterval(()=>console.log("Tick"),1000); //clock
-// setTimeout(()=>clearInterval(id),3500);
 
-// // Callbacks
-// function fetchData(cb){
-//   cb("Data received");
-// }
-// fetchData(console.log);
+// console.log("A");
+// setTimeout(() => console.log("B"),1000);
+// console.log("C");
 
-// // Callback Hell
-// setTimeout(() => {
-//   console.log("Task 1");
-//   setTimeout(() => {  // what if this fails?
-//     console.log("Task 2"); 
-//     setTimeout(() => { 
-//       console.log("Task 3"); 
+// Output: A, C, B
+
+// ⏱ setTimeout(), setInterval(), clearTimeout(), clearInterval()
+// const timer = setTimeout(() => console.log("Runs once after delay"), 1000);
+
+// const interval = setInterval(() => console.log("Repeats"), 1000);
+
+// clearTimeout(timer);     // stops timeout
+// clearInterval(interval); // stops interval
+
+// const fun = () => {
+//     let a = 5;
+//     const b = setInterval(() => {
+//         a = a + 1;
+//         console.log(a);
+//         if(a == 10){
+//             clearInterval(b);
+//         }
 //     }, 1000);
+
+// }
+// fun();
+
+// Callbacks and Callback Hell
+
+// Callback: A function passed into another function.
+
+// function fetchData(fun) {
+//   setTimeout(() => fun("Data received"), 1000);
+// }
+// fetchData(func);
+
+// const func = ()=> {console.log}
+
+// Callback Hell (nested callbacks):
+
+
+// callback hell easy example
+
+
+
+
+
+// const getUser = (callback) => {
+//   setTimeout(() => {
+//     console.log("Got user");
+//     callback();
 //   }, 1000);
-// }, 1000);
+// };
 
-// // Promises : A Promise represents the eventual completion (or failure) of an asynchronous task.
-// const promise = new Promise((resolve,reject)=>{
-//       let success = true
-//       setTimeout(()=> success?resolve("Done"):reject("Error"),3000);
+// const getPosts = (callback) => {
+//   setTimeout(() => {
+//     console.log("Got posts");
+//     callback();
+//   }, 1000);
+// };
+
+// const getComments = (callback) => {
+//   setTimeout(() => {
+//     console.log("Got comments");
+//     callback();
+//   }, 1000);
+// };
+
+
+
+// Promises
+
+// A promise represents a future result.
+// A Promise in JavaScript is an object that represents the result of an asynchronous operation
+// — either it completes successfully (resolved) 
+// - or fails (rejected)
+// — and allows you to run code when the result is available.
+
+// const promise = new Promise((resolve, reject) => {
+//     try {
+//         fetch("https://jsonplaceholder.typicode.com/users/1") // resolve
+//         .then((response) => response.json())
+//         .then((data) => resolve(data))
+//         .catch((error) => reject(error));
+
+//     } finally {
+//         console.log("Done");
+//     }
+// });
+
+// Promise States
+
+
+// console.log("A");
+// const B = fetch("https://jsonplaceholder.typicode.com/users/1")
+// console.log(B);
+// console.log("C");
+
+// Pending
+// Fulfilled (resolved)
+// Rejected
+
+// .then() .catch() .finally()
+
+// promise
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+//   .finally(() => console.log("Done"));
+
+// promise example
+// function getUser() {
+//   return fetch("https://jsonplaceholder.typicode.com/users/1") // API request
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error("Network error!");
+//       }
+//       return response.json(); // convert response to JSON
 //     });
-//
-// Pending → operation in progress
-// Resolved → operation successful (resolve())
-// Rejected → operation failed (reject())
-// promise.then(console.log).catch(console.error).finally(()=>console.log("Finished"));
+// }
 
+// promise using constructor
+// function fetchUserData() {
+//   return new Promise((resolve, reject) => {
+//     fetch("https://jsonplaceholder.typicode.com/user/1")
+//       .then(response => {
+//         if (!response.ok) {
+//           reject("Network error: " + response.status);
+//         }
+//         return response.json();
+//       })
+//       .then(data => resolve(data))
+//       .catch(error => reject(error));
+//   });
+// }
 
-// // Promise helpers
-// Promise.all([Promise.resolve(1),Promise.resolve(2)]).then(console.log);
+// // // // Consuming the Promise
+// fetchUserData()
+//   .then(result => console.log("User Data:", result))
+//   .catch(error => console.log("Error:", error))
+//   .finally(() => console.log("Request Completed 🚀"));
 
-// Promise.race([
-//   new Promise(res => setTimeout(() => res("Fast"), 3000)),
-//   new Promise(res => setTimeout(() => res("Slow"), 2000))
-// ]).then(console.log); // Slow
+// // // // Using the promise
+// getUser()
+//   .then(data => console.log("User Data:", data))
+//   .catch(err => console.log("Error:", err.message))
+//   .finally(() => console.log("Request Completed"));
 
-// Promise.allSettled([
-//  Promise.reject("Failed")
-//   Promise.resolve("Done"),
-//   Promise.reject("Failed")
-// ]).then(console.log);
+// Promise Utility Methods
+// Method	Behavior
+// Promise.all()	Waits for all promises → fails if any fails // returns a single promise
+// Promise.race()	Returns first completed (success or fail) // returns a single promise
+// Promise.allSettled()	Returns result of all, even failures. // return array of promises
+// Promise.any()	Returns first successful; ignores failures // returns a single promise
 
-// Promise.any([
-//   Promise.reject("Err1"),
-//   Promise.resolve("Success"),
-//   Promise.reject("Err2")
-// ]).then(console.log).catch(console.error); 
+// Example:
 
+// const p1 = new Promise(resolve => setTimeout(() => resolve("P1 done"), 1000));
+// const p2 = new Promise(resolve => setTimeout(() => resolve("P2 done"), 2000));
+// const p3 = new Promise((resolve, reject) => setTimeout(() => reject("P3 done"), 500));
+
+// Promise.all([p1, p2, p3])
+//   .then(result => console.log("All success:", result))
+//   .catch(error => console.log("Failed:", error));
+
+  // All success: ["P1 done", "P2 done", "P3 done"]
+
+// Promise.race([p1, p2, p3])
+//   .then(result => console.log("Winner:", result))
+//   .catch(error => console.log("Winner failed:", error));
+
+// Winner: P3 done
+
+// Promise.allSettled([p1, p2, p3])
+//   .then(result => console.log(result));
+
+// [
+//   { status: "fulfilled", value: "P1 done" },
+//   { status: "fulfilled", value: "P2 done" },
+//   { status: "rejected", reason: "P3 failed" }
+// ]
+
+// Promise.any([p1, p2, p3])
+//   .then(result => console.log("First success:", result))
+//   .catch(error => console.log("All failed:", error));
+
+// First success: P1 done
+
+// Promise.all([p1, p2]);
+// Promise.race([p1, p2]);
+// Promise.allSettled([p1, p2]);
+// Promise.any([p1, p2]);
+
+// Async/Await
+
+// Cleaner way to handle promises.
+
+// async function fetchData() {
+//   return "Data";
+// }
+
+// Use await to pause until promise resolves:
+
+// async function run() {
+//     try {
+//         const result = await fetch("https://jsonplaceholder.typicode.com/post/1");
+//         const finalResult = await result.json();
+//         console.log(finalResult);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+// run();
+
+// Error Handling (try...catch)
+// async function run() {
+//   try {
+//     const data = await fetchData();
+//     console.log(data);
+//   } catch (err) {
+//     console.log("Error:", err);
+//   }
+// }
 
 // // Async/Await
 // Declaring a function with async makes it return a Promise automatically.
@@ -294,89 +659,70 @@
 // }
 // loadData();
 
-
 // Event Loop & Execution Context
 
-// Call Stack → 
-// When a function is called, it’s pushed onto the stack.
+// Execution Context
+// Where JS code runs.
 
-// When it finishes, it’s popped off.
+// Types:
+// Global Execution Context
+// Created first.
+// Contains global variables, functions, and window (in browser).
 
-// JS executes one function at a time — hence it’s single-threaded.
+// Function Execution Context
+// Created each time a function runs.
+// Has its own variables, arguments, and this.
 
-// function first() {
-//   console.log("First");
-// }
+// Call Stack
+// A stack -----  where JS keeps track of what function is currently running.
+// Functions get pushed when called and popped when finished.
 
-// function second() {
-//   first();
-//   console.log("Second");
-// }
+// function a(){ b(); }
+// function b(){ console.log("Hi"); }
+// a(); // a → b → log → pop → pop
 
-// second();
+// Web APIs
+// Browser-provided features (NOT part of JavaScript).
+// Examples: setTimeout(), DOM, fetch(), localStorage.
+// JS sends async tasks here so they can run in background.
 
-// call stack ------- 
+// Callback Queue (Task Queue)
+// Stores completed async callbacks like:
+// setTimeout, setInterval, DOM events
+// Sent to execution only when call stack is empty.
 
-// → second() pushed
-//   → first() pushed
-//   → console.log("First") executed
-//   → first() popped
-// → console.log("Second") executed
-// → second() popped
-// (Stack empty)
+// Microtask Queue
+// Higher priority queue.
+// Stores:
+// Promise.then()
+// async/await resolved tasks
+// Always processed before callback queue.
 
+// Event Loop
 
+// The traffic controller.
+// Keeps checking:
 
-// Web APIs → timers, fetch
-// When JS runs in the browser, it has access to features provided by the environment — 
-// these are Web APIs, such as:
-
-// setTimeout()
-// const data = fetch("https://jsonplaceholder.typicode.com/posts/1")
-// DOM events
-// console
-
-
-// Callback Queue → setTimeout callbacks
-
-// After Web APIs finish their tasks, the callbacks (like from setTimeout, click events, etc.) 
-// are placed into the Callback Queue.
-
-// // Microtask Queue → Promises
-// Event Loop → moves tasks to stack when free
-
-// // Event Loop - js 
-// // Definition:
-// The Event Loop continuously checks:
-
-// is the head of the Call Stack empty?
 // Is the Call Stack empty?
-// If yes, are there Microtasks to run?
-// If Microtasks done, then process Callbacks (from Callback Queue).
-// Repeat forever ♻️
+// If yes → run tasks from Microtask Queue first.
+// Then move tasks from Callback Queue.
 
-// This mechanism gives JavaScript its asynchronous non-blocking behavior.
+// // Quick Example
+// console.log("Start");
+// setTimeout(() => console.log("Timeout"), 0);
+// Promise.resolve().then(() => console.log("Promise"));
+// console.log("End");
 
-// Execution Context (Global and Function)
-// Definition:
-// Every time JS code runs, it creates an execution context, 
-// which defines where and how variables and functions are stored and accessed.
+// Output:
+// Start
+// End
+// Promise
+// Timeout
 
-
-// Global/Function Execution Context
-// function outer() {
-//   var a = 5;
-//   function inner() {
-//     let b = 10;
-//     console.log(a + b); // inner can access outer variables
-//   }
-//   console.log(b); // outer cannot access inner variables 
-//   inner();
-// }
-
-// outer();
+// Because microtasks (Promise) run before callback queue (setTimeout).
 
 // DOM Manipulation
+
 // define: The DOM (Document Object Model) is a tree-like representation of your webpage’s HTML structure.
 // Every HTML element becomes a node (or object) that JS can access and manipulate.
 // JavaScript can use the DOM to:
@@ -389,24 +735,24 @@
 //   <h1 id="title">Hello</h1>
 //   <button class="btn" onclick="handleClick()">Click</button>
 //   <script>
-    // const title = document.getElementById("title");
-    // const btn = document.querySelector(".btn");
+// const title = document.getElementById("title");
+// const btn = document.querySelector(".btn");
 
 //     // Modify
-    // title.innerHTML =<h1>"JS DOM Demo"</h1>;
+// title.innerHTML =<h1>"JS DOM Demo"</h1>;
 //     title.style.color = "blue";
 
 //     // Attributes
-    // title.setAttribute("data-info", "heading");
-    // console.log(title.getAttribute("data-info"));
+// title.setAttribute("data-info", "heading");
+// console.log(title.getAttribute("data-info"));
 
 //     // ClassList
 //     title.classList.add("highlight");
 //     console.log(title.classList.contains("highlight"));
 
 //     // Create/Remove elements
-    // const p = document.createElement("p");
-    // p.textContent = "Dynamic paragraph";
+// const p = document.createElement("p");
+// p.textContent = "Dynamic paragraph";
 //     document.body.appendChild(p);
 //     // document.body.removeChild(p);
 
@@ -446,7 +792,6 @@
 // Selects all matching elements (returns a NodeList, can use .forEach()).
 // const allTexts = document.querySelectorAll(".text");
 // allTexts.forEach(el => console.log(el.innerText));
-
 
 // innerHTML, innerText, textContent
 // el.innerHTML = "<b>Hi</b>"
@@ -522,6 +867,15 @@
 //   console.log("Event Timestamp:", e.timeStamp);
 // });
 
+// Event Bubbling (Default)
+// When you click an element, the event triggers on that element, then bubbles UP to its parent, grandparent, etc. Order: Child -> Parent -> Grandparent
+
+// Event Capturing
+// The reverse of bubbling. The event goes DOWN from the root to the target. Order: Grandparent -> Parent -> Child
+
+// Event Delegation
+// A technique where you add one event listener to a parent element to manage events for all its children (even those added dynamically in the future).
+
 // e.target → element that triggered the event
 // e.preventDefault() → stops default browser behavior
 // e.stopPropagation() → prevents bubbling to parent elements
@@ -532,7 +886,7 @@
 // Parent clicked!
 
 // Event Delegation
-// Instead of adding event listeners to multiple child elements, 
+// Instead of adding event listeners to multiple child elements,
 // add a single listener to their parent and use event.target to identify the clicked child.
 // document.getElementById("menu").addEventListener("click", (e) => {
 //   if (e.target.tagName === "LI") {
@@ -553,7 +907,6 @@
 
 // sessionStorage.removeItem("token");
 // sessionStorage.clear();
-
 
 // // Cookies (basic)
 // document.cookie = "user=John; max-age=3600";
@@ -607,7 +960,6 @@
 //   .then(res => res.json())
 //   .then(data => console.log(data));
 
-
 // Error Handling
 // try {
 //   let x = y + 2; // ReferenceError
@@ -624,11 +976,7 @@
 // }
 // try { console.log(divide(4,0)); } catch(e){ console.error(e.message); }
 
-
-
-
 //Advanced Concepts
-
 
 // Understand prototypes, classes, and performance patterns.
 // // Prototype
@@ -639,14 +987,12 @@
 // const p1 = new Person("Bob");
 // p1.sayHi();
 
-
 // // Class (syntactic sugar)
 // class Car {
 //   constructor(brand){ this.brand = brand; }
 //   get info(){ return `Car: ${this.brand}`; }
 //   static category(){ return "Vehicle"; }
 // }
-
 
 // Inheritance
 // class SuperCar extends Car {
@@ -668,7 +1014,6 @@
 //     else this._name = value;
 //   }
 // }
-
 
 // static methods
 // class MathHelper {
@@ -705,7 +1050,7 @@
 // debouncedSearch();
 // debouncedSearch();
 
-// throttling : 
+// throttling :
 // function throttle(func, limit) {
 //   let inThrottle;
 //   return function(...args) {
@@ -725,4 +1070,147 @@
 
 // window.addEventListener("scroll", throttledScroll);
 
+// Prototypes & Prototypal Inheritance
 
+// Every JavaScript object has a hidden property called [[Prototype]] that allows it to inherit methods and properties from another object.
+
+// const animal = {
+//   sound() { console.log("Some sound"); }
+// };
+
+// const dog = Object.create(animal);
+// dog.sound(); // inherited → "Some sound"
+
+// 🏗️ Constructor Functions
+
+// Used to create multiple objects with the same structure before ES6 classes.
+
+// function Person(name) {
+//   this.name = name;
+// }
+
+// Person.prototype.greet = function() {
+//   console.log(`Hello, I'm ${this.name}`);
+// };
+
+// const p1 = new Person("Satya");
+// p1.greet();
+
+// 🧱 Classes (ES6)
+
+// A modern and cleaner syntax but still uses prototypes under the hood.
+
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   greet() {
+//     console.log(`Hello, I'm ${this.name}`);
+//   }
+// }
+
+// 🪜 Inheritance (extends, super)
+
+// Classes can inherit from another class using extends.
+// super() calls the parent constructor.
+
+// class Animal {
+//   constructor(name) { this.name = name; }
+//   sound() { console.log("Animal sound"); }
+// }
+
+// class Dog extends Animal {
+//   constructor(name) {
+//     super(name); // calls parent constructor
+//   }
+//   sound() { console.log("Bark!"); }
+// }
+
+// const d = new Dog("Tommy");
+// d.sound();
+
+// 🎭 Getters & Setters
+
+// Used to control access to object properties.
+
+// class User {
+//   constructor(name) {
+//     this._name = name;
+//   }
+//   get name() {
+//     return this._name.toUpperCase();
+//   }
+//   set name(value) {
+//     this._name = value;
+//   }
+// }
+
+// const u = new User("sara");
+// console.log(u.name); // SARA
+// u.name = "Mia";
+
+// 🧩 Static Methods
+
+// Methods that belong to the class itself, not instances.
+
+class MathUtility {
+  static add(a, b) {
+    return a + b;
+  }
+}
+
+console.log(MathUtility.add(5, 3)); // Accessible without creating object
+
+// ⏳ Debouncing
+
+// Executes a function after a delay, 
+// only if no new call happens during that delay.
+
+// Used for: search input, resize event.
+
+function debounce(fn, delay) {
+  let timer;
+  return function(...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => console.log("Hi"), 5000);
+  };
+}
+
+// const log = debounce(() => console.log("Typing stopped"), 500);
+
+// 🚦 Throttling
+
+// Ensures a function runs at most once in a fixed time interval.
+
+// Used for: scroll events, mouse movement.
+
+// function throttle(fn, delay) {
+//   let active = false;
+//   return function(...args) {
+//     if (!active) {
+//       fn(...args);
+//       active = true;
+//       setTimeout(() => active = false, delay);
+//     }
+//   };
+// }
+
+// const throttledLog = throttle(() => console.log("Scrolling..."), 1000);
+
+// 🔄 Memoization
+
+// Caches function results to avoid redundant calculations.
+
+// function memoize(fn) {
+//   const cache = {};
+//   return function(...args) {
+//     const key = JSON.stringify(args);
+//     if (cache[key]) return cache[key];
+//     const result = fn(...args);
+//     cache[key] = result;
+//     return result;
+//   };
+// }
+
+// const factorial = memoize(n => n <= 1 ? 1 : n * factorial(n - 1));
+// console.log(factorial(5)); // Cached for future calls
